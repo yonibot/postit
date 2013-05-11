@@ -22,6 +22,7 @@ group :development do
   gem 'sqlite3'
   gem 'pry'
   gem 'quiet_assets'
+  gem 'annotate'
 end
 
 group :production do
