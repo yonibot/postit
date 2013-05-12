@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: categories
+# Table name: post_categories
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -8,8 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-class Category < ActiveRecord::Base
-  has_many :post_categories
-  has_many :posts, through: :post_categories
-
+class PostCategory < ActiveRecord::Base
+  belongs_to :post
+  belongs_to :category
 end
