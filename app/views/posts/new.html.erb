@@ -1,0 +1,33 @@
+<h3>Create a new post!</h3>
+<br>
+<!-- Regular HTML Form that returns a params hash -->
+
+<!-- <form action ="/posts" method="post">
+  Title: <input type="text" name ="post[title]">
+  <br>
+  URL: <input type="text" name="post[url]">
+  <br>
+  <input type="submit" value="Create post">
+</form> -->
+
+
+<!-- Model-backed Form -->
+
+<%= form_for @post do |f| %>
+
+  <%= f.label :title %>        <!-- Label tag is for accessibility! -->
+  <%= f.text_field :title %>
+<br>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+<br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+<br>
+
+  <%= f.submit %>
+<% end %>
+
+

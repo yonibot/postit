@@ -1,0 +1,18 @@
+<h3>Editing Post: <%= @post.title %></h3>
+<br>
+<%= form_for @post do |f| %>
+
+  <%= f.label :title %>        <!-- Label tag is for accessibility! -->
+  <%= f.text_field :title %>
+<br>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+<br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+<br>
+
+  <%= f.submit %>
+<% end %>
