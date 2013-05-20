@@ -4,7 +4,7 @@
 
   <% @posts.each do |post| %>
     <ul>
-      <li>Title: <strong><%= post.title %></strong></li>
+      <li>Title: <%= link_to "#{post.title}", post_path(post) %></li>
       <li>URL: <%= post.url %></li>
       <li>Description: <%= post.description %></li>
       <li>Post by: User <%= post.user_id %></li>

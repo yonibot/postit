@@ -1,17 +1,19 @@
-<h3>Displaying <%= @post.title %></h3>
+<h3><%= @post.title %></h3>
 <br>
-<h4><%= @post.url %></h4>
+<p>URL: <%= @post.url %></p>
 
-<h3>Comments:</h3>
 
-<ul>
-<% @comments.each do |comment| %>
-  <li><%= comment.body %>
+<% if @comments.any? %>
+  <h3>Comments:</h3>
+  <ul>
+  <% @comments.each do |comment| %>
+   <li><%= comment.body %>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
-
-
-<h3>Comment on me!</h3>
+<br>
+<br>
+<h4>Leave a comment</h3>
 
 <%= form_for [@post, @comment] do |f| %>
 
