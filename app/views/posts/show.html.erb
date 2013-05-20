@@ -1,3 +1,23 @@
 <h3>Displaying <%= @post.title %></h3>
 <br>
 <h4><%= @post.url %></h4>
+
+<h3>Comments:</h3>
+
+<ul>
+<% @comments.each do |comment| %>
+  <li><%= comment.body %>
+<% end %>
+</ul>
+
+
+<h3>Comment on me!</h3>
+
+<%= form_for [@post, @comment] do |f| %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+  <br>
+  <%= f.submit %>
+<% end %>
+

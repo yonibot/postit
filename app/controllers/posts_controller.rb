@@ -16,10 +16,14 @@ class PostsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.all  
+    @comment = @post.comments.new(params[:comment])
+
   end
 
   def edit
