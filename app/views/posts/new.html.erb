@@ -1,5 +1,19 @@
 <h3>Create a new post!</h3>
 <br>
+<% if @post.errors.any? %>
+  <div class = 'alert alert-error'>
+    <ul>
+    <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+  </ul>
+<!-- Alternatively - join the messages on one line --> 
+<!--<%= @post.errors.full_messages.join(', ') %> -->
+
+</div>
+<% end %>
+<br>
+
 <!-- Regular HTML Form that returns a params hash -->
 
 <!-- <form action ="/posts" method="post">

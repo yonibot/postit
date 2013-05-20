@@ -1,11 +1,13 @@
-<h2>Displaying all posts on the system:</h3>
+<h2>All posts on the system:</h3>
 
 
 
   <% @posts.each do |post| %>
     <ul>
-      <li><strong><%= post.title %></strong></li>
-      <li><%= post.url %></li>
-      <li><%= post.user_id %></li>
+      <li>Title: <strong><%= post.title %></strong></li>
+      <li>URL: <%= post.url %></li>
+      <li>Description: <%= post.description %></li>
+      <li>Post by: User <%= post.user_id %></li>
+      <li><%= link_to "Edit Post No. #{post.id}" , edit_post_path(post) %></li>
     </ul>
   <% end %>

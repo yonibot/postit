@@ -1,5 +1,22 @@
 <h3>Editing Post: <%= @post.title %></h3>
 <br>
+
+<% if @post.errors.any? %>
+  <div class = 'alert alert-error'>
+    <ul>
+    <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+  </ul>
+<!-- Alternatively - join the messages on one line --> 
+<!--<%= @post.errors.full_messages.join(', ') %> -->
+
+</div>
+<% end %>
+
+<br>
+
+
 <%= form_for @post do |f| %>
 
   <%= f.label :title %>        <!-- Label tag is for accessibility! -->

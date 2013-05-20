@@ -23,7 +23,6 @@ group :development do
   gem 'pry'
   gem 'quiet_assets'
   gem 'annotate'
-  gem 'pry-rails'
 end
 
 group :production do
