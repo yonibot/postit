@@ -14,10 +14,11 @@
 <br>
 <br>
 <h4>Leave a comment</h3>
+  <br>
 
 <%= form_for [@post, @comment] do |f| %>
 
-  <%= f.label :body %>
+  <%= f.label :body, 'Comment:' %>
   <%= f.text_field :body %>
   <br>
   <%= f.submit %>

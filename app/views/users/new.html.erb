@@ -1,0 +1,23 @@
+<h3>Register a new account:</h3>
+<br>
+<!--<%= @user.errors.full_messages.join(', ') %>
+<br>-->
+
+  <ul>
+    <% @user.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<br>
+
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+

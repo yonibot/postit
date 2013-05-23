@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_filter :require_user, only: [:create]
+
   def new
     @comment = Comment.new
   end
@@ -7,12 +9,14 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(params[:comment])
+    @comment.user_id = session[:user_id]
 
     if @comment.save
       flash[:notice] = "Comment has been saved."
       redirect_to post_path(@post)
     else
       # TODO - handle failure
+
     end
   end
 
