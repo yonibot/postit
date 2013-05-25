@@ -2,16 +2,16 @@
 
 <div class = "span8 well">
    <ul style = "list-style: none;">
-      <li>Title: 
+      <li>
         <%= link_to "#{post.title}", post_path(post) %>
         <% if logged_in? && session[:user_id] == post.user_id %>
           →  <%= link_to "edit", edit_post_path(post) %>
         <% end %>
       </li>
 
-      <li>URL: <%= post.url %></li>
-      <li>Description: <%= post.description %></li>
-      <li>Posted by <%= post.user.username %></li>
+      <li><%= link_to "#{post.url}", post.url %></li>
+      <li><%= post.description %></li>
+      <li>Posted by <%= link_to "#{post.user.username}", user_path(post.user_id) %> <%= time_ago_in_words(post.created_at) %> ago • <%= pluralize(post.comments.length, 'comment') %></li>
     </ul>
   </div>
   <% end %>

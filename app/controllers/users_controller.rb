@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -16,6 +17,13 @@ class UsersController < ApplicationController
       render :new   #renders users#new template corresponding to action. Same as render "new" and render action: "edit", to be explicit
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+    
+  end
+
+
 
 end
 
