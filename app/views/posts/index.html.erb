@@ -1,12 +1,13 @@
+
+
 <% @posts.each do |post| %>
+
 <div class = "span8 well">
-
-
-    <ul style = "list-style: none;">
+   <ul style = "list-style: none;">
       <li>Title: <%= link_to "#{post.title}", post_path(post) %></li>
       <li>URL: <%= post.url %></li>
       <li>Description: <%= post.description %></li>
-      <li>Posted by <%= post.user_id %></li>
+      <li>Posted by <%= post.user.username %></li>
       <li><%= link_to "Edit Post No. #{post.id}" , edit_post_path(post) %></li>
     </ul>
   </div>
