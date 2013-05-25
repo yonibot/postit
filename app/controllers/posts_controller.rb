@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   before_filter :require_user, only: [:new, :create]
 
+  def find_username(user_id)
+    @namename = User.find(user_id)
+  end
+
+
   def index
     @posts = Post.all
   end
