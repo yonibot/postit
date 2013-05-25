@@ -1,1 +1,1 @@
-Tealeaf Academy - Rapid Prototyping with Ruby on Rails
+PostMe! An app for posting cool stuff.

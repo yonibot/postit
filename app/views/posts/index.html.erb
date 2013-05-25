@@ -2,11 +2,16 @@
 
 <div class = "span8 well">
    <ul style = "list-style: none;">
-      <li>Title: <%= link_to "#{post.title}", post_path(post) %></li>
+      <li>Title: 
+        <%= link_to "#{post.title}", post_path(post) %>
+        <% if logged_in? && session[:user_id] == post.user_id %>
+          →  <%= link_to "edit", edit_post_path(post) %>
+        <% end %>
+      </li>
+
       <li>URL: <%= post.url %></li>
       <li>Description: <%= post.description %></li>
       <li>Posted by <%= post.user.username %></li>
-      <li><%= link_to "Edit Post No. #{post.id}" , edit_post_path(post) %></li>
     </ul>
   </div>
   <% end %>
