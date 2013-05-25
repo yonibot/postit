@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @firstPost = Post.first
   end
 
   def new

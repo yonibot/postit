@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Welcome #{@user.username}! You are now registered."
-      session[:user_id] = @user.params[:user]
+      session[:user_id] = @user.id
       redirect_to posts_path
     else
       # TODO - display errors on the New form page
