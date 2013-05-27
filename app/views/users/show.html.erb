@@ -1,3 +1,22 @@
-<h4><%= @user.username %></h4>
+<h3><%= @user.username %></h3>
 
 <p>Registered on: <%= @user.created_at %></p>
+<br><br>
+<h4>Posts by <%= @user.username %>:</h4>
+
+<% @posts.each do |post| %>
+
+<div class = "span8 well">
+   <ul style = "list-style: none;">
+      <li>
+        <%= link_to "#{post.title}", post_path(post) %>
+          →  <%= link_to "edit post", edit_post_path(post) %>
+      </li>
+
+      <li><%= link_to "#{post.url}", post.url %></li>
+      <li><%= post.description %></li>
+      <li>Posted 
+        <%= time_ago_in_words(post.created_at) %> ago • <%= pluralize(post.comments.length, 'comment') %></li>
+    </ul>
+  </div>
+  <% end %>

@@ -10,7 +10,14 @@ Postit::Application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   resources :posts, except: [:destroy] do
-    resources :comments
+    member do
+      post 'vote'  #goes to posts#vote
+    end
+    resources :comments do
+      member do
+        post 'vote'
+      end
+    end
   end
 
 

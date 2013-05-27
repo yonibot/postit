@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :require_user, only: [:new, :create]
+  before_filter :require_user, except: [:index, :show, :vote]
 
   def index
     @posts = Post.all
@@ -32,6 +32,10 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    unless session[:user_id] == @post.user_id
+    # flash[:error] = "You don't have access to that."
+      redirect_to root_path
+    end
   end
 
   def update
@@ -44,6 +48,13 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def vote
+    post = Post.find(params[:id])
+    Vote.create(voteable: post, user: current_user, vote: params[:vote])
+    flash[:notice] = "Your vote was counted :)"
+    redirect_to posts_path
   end
 
 

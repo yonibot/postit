@@ -12,6 +12,7 @@
 class User < ActiveRecord::Base
 	has_many :posts
   has_many :comments
+  has_many :votes
   validates :username, presence: true
 
   has_secure_password  #automatically validates presence of password_digest
