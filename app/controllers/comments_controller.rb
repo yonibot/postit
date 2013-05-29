@@ -31,6 +31,20 @@ class CommentsController < ApplicationController
 
   def index
   end
+
+  def vote
+    @comment = Comment.find(params[:id])
+    Vote.create(voteable: @comment, user: current_user, vote: params[:vote])
+    
+    respond_to do |format|
+      format.html do
+        # if @vote.save... don't care cause no validation
+      end
+      format.js  #renders vote.js.erb template
+    end
+  end
+
+
 end
 
 

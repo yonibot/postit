@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :require_user, except: [:index, :show, :vote]
+  before_filter :require_user, except: [:index, :show]
 
   def index
     @posts = Post.all
@@ -20,14 +20,12 @@ class PostsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.all  
-    @comment = @post.comments.new(params[:comment])
-
+    @comments = @post.comments.all
+    @comment = @post.comments.new
   end
 
   def edit
@@ -51,10 +49,16 @@ class PostsController < ApplicationController
   end
 
   def vote
-    post = Post.find(params[:id])
-    Vote.create(voteable: post, user: current_user, vote: params[:vote])
-    flash[:notice] = "Your vote was counted :)"
-    redirect_to posts_path
+    @post = Post.find(params[:id])
+    Vote.create(voteable: @post, user: current_user, vote: params[:vote])
+    
+    respond_to do |format|
+      format.html do
+        # if @vote.save... don't care cause no validation
+      end
+      format.js  #renders vote.js.erb template
+    end
+
   end
 
 

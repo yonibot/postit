@@ -1,0 +1,4 @@
+alert('<%=@post.total_votes%> total <%="vote".pluralize(@post.total_votes)%> for <%=@post.title%>');
+
+$("#post_<%=@post.id%>_vote").html('<%= pluralize(@post.total_votes, 'vote') %>');
+

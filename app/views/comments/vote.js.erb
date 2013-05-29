@@ -1,0 +1,3 @@
+alert('<%=@comment.total_votes%> total <%="vote".pluralize(@comment.total_votes)%>.);
+
+$("#comment_<%=@comment.id%>_vote").html('<%= pluralize(@comment.total_votes, 'vote') %>');

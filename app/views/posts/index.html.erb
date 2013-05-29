@@ -1,5 +1,4 @@
 
-<!--    numberOfVotes = post.votes.find_all_by_vote(true) - post.votes.find_all_by_vote(false)       -->
 
 
 
@@ -10,9 +9,13 @@
 <div class = "row">
 
   <div class = "span1 text-center well">
-   <%= link_to '△', vote_post_path(post, vote: 'true'), method: 'post' %><br>
-   <%= post.total_votes %> votes<br>
-   <%= link_to '▽', vote_post_path(post, vote: 'false'), method: 'post' %>
+   <% if logged_in? %>
+    <%= link_to '<i class="icon-chevron-up"></i>'.html_safe, vote_post_path(post, vote: 'true'), method: 'post', remote: true %><br>
+   <% end %>
+   <span id="post_<%=post.id%>_vote"><%= pluralize(post.total_votes, 'vote') %></span><br>
+   <% if logged_in? %>
+    <%= link_to '<i class="icon-chevron-down"></i>'.html_safe, vote_post_path(post, vote: 'false'), method: 'post', remote: true %>
+  <% end %>
   </div>
   <div class = "span8 well">
 
